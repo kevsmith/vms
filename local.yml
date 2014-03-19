@@ -1,4 +1,5 @@
 ---
 
 - hosts: precise64
-  roles: [dev]
+  roles:
+    - dev

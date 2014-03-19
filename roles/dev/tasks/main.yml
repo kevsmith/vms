@@ -1,5 +1,6 @@
 ---
-- sudo: yes
+- hosts: all
+  sudo: yes
 
   tasks:
     - name: update apt mirror URLs
