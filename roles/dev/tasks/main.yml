@@ -8,7 +8,7 @@
     - name: add ES apt repos
       command: echo "deb http://packages.erlang-solutions.com/debian wheezy contrib" > /etc/apt/sources.list.d/erlang_solutions.list
     - name: add ES apt repos
-      command echo "deb http://packages.erlang-solutions.com/debian squeeze contrib" >> /etc/apt/sources.list.d/erlang_solutions.list
+      command: echo "deb http://packages.erlang-solutions.com/debian squeeze contrib" >> /etc/apt/sources.list.d/erlang_solutions.list
     - name: install ES apt key
       apt_key: url=http://packages.erlang-solutions.com/debian/erlang_solutions.asc state=present
     - name: refresh apt cache
