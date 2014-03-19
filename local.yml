@@ -1,6 +1,7 @@
 ---
 
 - hosts: precise64
+  sudo: yes
   tasks:
     - name: update apt mirror URLs
       command: sed -i 's/us.archive.ubuntu.com/mirrors.us.kernel.org/g' /etc/apt/sources.list
