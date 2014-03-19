@@ -25,4 +25,4 @@
       git: repo=git://github.com/rebar/rebar.git
            dest=/tmp/rebar
     - name: build & install rebar
-      command: cd /tmp/rebar && make && cp rebar /usr/local/bin
+      command: "cd /tmp/rebar && make && cp rebar /usr/local/bin"
