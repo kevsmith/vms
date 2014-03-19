@@ -1,0 +1,28 @@
+---
+- hosts: all
+  sudo: yes
+
+  tasks:
+    - name: update apt mirror URLs
+      command: sed -i 's/us.archive.ubuntu.com/mirrors.us.kernel.org/g' /etc/apt/sources.list
+    - name: add ES apt repos
+      command: echo "deb http://packages.erlang-solutions.com/debian wheezy contrib" > /etc/apt/sources.list.d/erlang_solutions.list
+    - name: add ES apt repos
+      command echo "deb http://packages.erlang-solutions.com/debian squeeze contrib" >> /etc/apt/sources.list.d/erlang_solutions.list
+    - name: install ES apt key
+      apt_key: url=http://packages.erlang-solutions.com/debian/erlang_solutions.asc state=present
+    - name: refresh apt cache
+      apt: update_cache=yes
+    - name: install packages
+      apt: pkg={{ item }} state=latest
+      with_items:
+        - build-essential
+        - automake
+        - autoconf
+        - git
+        - erlang
+    - name: clone rebar
+      git: repo=git://github.com/rebar/rebar.git
+           dest=/tmp/rebar
+    - name: build & install rebar
+      command: cd /tmp/rebar && make && cp rebar /usr/local/bin
