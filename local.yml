@@ -24,5 +24,9 @@
     - name: clone rebar
       git: repo=git://github.com/rebar/rebar.git
            dest=/tmp/rebar
-    - name: build & install rebar
-      command: "cd /tmp/rebar && make && cp rebar /usr/local/bin"
+    - name: build rebar
+      command: make
+      chdir: /tmp/rebar
+    - name: install rebar
+      command: cp rebar /usr/local/bin
+      chdir: /tmp/rebar
