@@ -1,6 +1,5 @@
 ---
-- hosts: all
-  sudo: yes
-  - include: install_erlang.yml
-  - include: rebar.yml dest=/usr/local/bin
-  - include: packages.yml
+
+- include: install_erlang.yml
+- include: rebar.yml dest=/usr/local/bin
+- include: packages.yml
