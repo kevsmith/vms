@@ -24,6 +24,6 @@
       git: repo=git://github.com/rebar/rebar.git
            dest=/tmp/rebar
     - name: build rebar
-      command: make chddir=/tmp/rebar creates=/tmp/rebar/rebar
+      command: make chdir=/tmp/rebar creates=/tmp/rebar/rebar
     - name: install rebar
       command: cp rebar /usr/local/bin chdir=/tmp/rebar creates=/usr/local/bin/rebar
