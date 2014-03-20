@@ -1,0 +1,12 @@
+---
+
+tasks:
+  - name: add ES apt repos
+    command: echo "deb http://packages.erlang-solutions.com/debian wheezy contrib" > /etc/apt/sources.list.d/es_wheezy.list creates=/etc/apt/sources.list.d/es_wheezy.list
+  - name: add ES apt repos
+    command: echo "deb http://packages.erlang-solutions.com/debian squeeze contrib" >> /etc/apt/sources.list.d/es_squeez.list creates=/etc/apt/sources.list.d/es_squeeze.list
+  - name: install ES apt key
+    apt_key: url=http://packages.erlang-solutions.com/debian/erlang_solutions.asc state=present
+  - name: install erlang packages
+    apt: pkg=erlang state=latest update_cache=yes
+  - include: rebar.yml dest=/usr/local/bin

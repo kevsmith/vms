@@ -1,0 +1,9 @@
+---
+- vars:
+  dest=/usr/local/bin
+- name: clone rebar
+  git: repo=git://github.com/rebar/rebar.git dest=/tmp/rebar
+- name: build rebar
+  command: make chdir=/tmp/rebar creates=/tmp/rebar/rebar
+- name: install rebar
+  command: cp rebar {{ dest }} chdir=/tmp/rebar creates="{{ dest }}/rebar"
