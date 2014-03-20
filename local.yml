@@ -6,9 +6,9 @@
     - name: update apt mirror URLs
       command: sed -i 's/us.archive.ubuntu.com/mirrors.us.kernel.org/g' /etc/apt/sources.list
     - name: add ES apt repos
-      command: echo "deb http://packages.erlang-solutions.com/debian wheezy contrib" > /etc/apt/sources.list.d/erlang_solutions.list
+      command: echo "deb http://packages.erlang-solutions.com/debian wheezy contrib" > /etc/apt/sources.list.d/es_wheezy.list creates=/etc/apt/sources.list.d/es_wheezy.list
     - name: add ES apt repos
-      command: echo "deb http://packages.erlang-solutions.com/debian squeeze contrib" >> /etc/apt/sources.list.d/erlang_solutions.list
+      command: echo "deb http://packages.erlang-solutions.com/debian squeeze contrib" >> /etc/apt/sources.list.d/es_squeez.list creates=/etc/apt/sources.list.d/es_squeeze.list
     - name: install ES apt key
       apt_key: url=http://packages.erlang-solutions.com/debian/erlang_solutions.asc state=present
     - name: refresh apt cache
@@ -19,14 +19,11 @@
         - build-essential
         - automake
         - autoconf
-        - git
         - erlang
     - name: clone rebar
       git: repo=git://github.com/rebar/rebar.git
            dest=/tmp/rebar
     - name: build rebar
-      command: make
-      chdir: /tmp/rebar
+      command: make chddir=/tmp/rebar creates=/tmp/rebar/rebar
     - name: install rebar
-      command: cp rebar /usr/local/bin
-      chdir: /tmp/rebar
+      command: cp rebar /usr/local/bin chdir=/tmp/rebar creates=/usr/local/bin/rebar
