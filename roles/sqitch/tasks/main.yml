@@ -1,0 +1,11 @@
+---
+- name: install sqitch & galactus-sql
+  apt: state=latest update_cache=yes cache_valid_time=3600 name={{ item }}
+  with_items:
+    - sqitch
+    - galactus-sql
+- name: create sqitch.conf
+  template: state=absent src=sqitch.conf dest=/opt/planet/tools/lib/
+
+- name: update database schema
+  command: "{{ sqitch_cmd }} deploy --to-change {{ galactus_vsn }}" chdir=/usr/lib/galactus/sql

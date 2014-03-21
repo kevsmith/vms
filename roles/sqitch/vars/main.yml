@@ -1,0 +1,3 @@
+---
+sqitch_cmd: /opt/planet/tools/bin/sqitch
+galactus_vsn: v0.1
