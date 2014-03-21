@@ -3,4 +3,4 @@
 - hosts: precise64
   sudo: yes
   roles:
-    - { role: sqitch, galactus_vsn: 'v0.1'}
+    - { role: sqitch, galactus_vsn: 'v0.1', db_username: 'foo', galactus_db_password: 'foo', db_host: 'localhost', db_suffix: '_test'}
