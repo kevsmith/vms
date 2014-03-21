@@ -1,6 +1,6 @@
 ---
 - name: install sqitch & galactus-sql
-  apt: state=latest update_cache=yes cache_valid_time=3600 name={{ item }}
+  apt: state=latest update_cache=yes cache_valid_time=3600 force=yes name={{ item }}
   with_items:
     - sqitch
     - galactus-sql
