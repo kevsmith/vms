@@ -8,4 +8,4 @@
   template: state=absent src=sqitch.conf dest=/opt/planet/tools/lib/
 
 - name: update database schema
-  command: "{{ sqitch_cmd }} deploy --to-change {{ galactus_vsn }}" chdir=/usr/lib/galactus/sql
+  shell: chdir=/usr/lib/galactus/sql "{{ sqitch_cmd }} deploy --to-change {{ galactus_vsn }}"

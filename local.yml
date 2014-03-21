@@ -3,4 +3,4 @@
 - hosts: precise64
   sudo: yes
   roles:
-    - sqitch
+    - { role: sqitch, galactus_vsn: 'v0.1'}
