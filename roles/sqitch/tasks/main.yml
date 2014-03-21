@@ -5,7 +5,7 @@
     - sqitch
     - galactus-sql
 - name: create sqitch.conf
-  template: state=absent src=sqitch.conf dest=/opt/planet/tools/lib/
+  template: src=sqitch.conf dest=/opt/planet/tools/lib/
 
 - name: update database schema
   shell: chdir=/usr/lib/galactus/sql "{{ sqitch_cmd }} deploy --to-change {{ galactus_vsn }}"
